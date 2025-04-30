@@ -2,6 +2,15 @@
     font-family: Dank Mono, monospace;
 }
 
+.integrated-terminal * {
+    font-family: 'CaskaydiaCove NF', monospace;
+}
+
+/* Variable color */
+.mtk1 {
+    color: #cbd1e6 !important;
+}
+
 .titlebar-right {
     display: none !important;
 }
