@@ -11,10 +11,7 @@
 
 To use this configuration repository:
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/config-repo.git %personal%/config
-   ```
+1. Clone the repository: ``` git clone https://github.com/yourusername/config-repo.git %personal%/config ```
 2. Open repo and install fonts under ./fonts
 3. Follow the specific setup instructions in each section below.
 
