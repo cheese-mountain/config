@@ -75,20 +75,20 @@
     // Close editor/sidebar/terminal
     {
         "command": "workbench.action.closeActiveEditor",
-        "key": "ctrl+q"
+        "key": "ctrl+w"
     },
     {
         "command": "workbench.action.closeEditorsToTheRight",
-        "key": "ctrl+shift+q"
+        "key": "ctrl+shift+w"
     },
     {
         "command": "workbench.action.toggleSidebarVisibility",
-        "key": "ctrl+q",
+        "key": "ctrl+w",
         "when": "sideBarFocus"
     },
     {
         "command": "workbench.action.terminal.kill",
-        "key": "ctrl+q",
+        "key": "ctrl+w",
         "when": "terminalFocus"
     },
 
@@ -106,7 +106,7 @@
 
     // Focus terminal
     {
-        "key": "ctrl+w",
+        "key": "ctrl+m",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "terminal.active"
     },

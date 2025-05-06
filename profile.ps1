@@ -16,9 +16,12 @@ Set-PSReadLineOption -EditMode Windows
 
 # Fzf
 Import-Module PSFzf
-function cdf {
-    $directories = fd -t d -d 5 
-    $path = $directories | fzf --height 40% --layout reverse --border --preview 'ls {}'
+Import-Module PSEverything
+function fd {
+    $folders = Search-Everything `
+        -Filter folder: -PathExclude `
+        .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
+    $path = $folders | fzf --height 40% --layout reverse --border --preview 'ls {}'
     if ($path) {
         Set-Location $path
     } 
@@ -28,4 +31,12 @@ function cdf {
 function where ($command) {
   Get-Command -Name $command -ErrorAction SilentlyContinue |
     Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
+}
+
+function bin($empty) {
+    if ($empty -eq "empty") {
+        Clear-RecycleBin -Force
+    } else {
+        explorer.exe shell:RecycleBinFolder
+    }
 }

@@ -19,11 +19,11 @@ To use this configuration repository:
 
 Follow these steps to set up the terminal environment:
 
-1. Install latest powershell, windows terminal, terminal icons & oh my posh
+1. Install powershell, windows terminal, Everything & oh my posh
 2. Copy paste windows terminal settings from windows-terminal.json
 3. Run ```Set-ExecutionPolicy RemoteSigned -Scope CurrentUser```
 4. add . I:\path\to\profile.ps1 to $PROFILE.CurrentUserCurrentHost
-5. Install powershell modules
+5. Run ```Install-Module PSEverything, "Terminal-Icons", PSFzf```
 
 ## Keybindings
 

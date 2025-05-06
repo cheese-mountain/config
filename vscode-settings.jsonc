@@ -94,6 +94,7 @@
     // Vim config
     "vim.useSystemClipboard": true,
     "vim.foldfix": true,
+    "vim.surround": true,
     "extensions.experimental.affinity": {
         "vscodevim.vim": 1
     },
@@ -172,6 +173,12 @@
         {
             "before": ["leader", "c"],
             "commands": ["editor.action.commentLine"]
+        },
+
+        // Delete line without overriding yank register
+        {
+            "before": ["leader", "d"],
+            "after": ["\"", "_", "d"]
         },
 
         // Move selected lines while staying in visual mode
