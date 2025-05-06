@@ -37,4 +37,4 @@ Follow these steps to set up the keybindings:
 
 ## VSCode
 
-To setup vscode, simply login and sync
+Login and sync
