@@ -52,10 +52,10 @@
     "editor.lineNumbers": "relative",
     "editor.guides.indentation": false,
     "breadcrumbs.enabled": false,
-    "scm.diffDecorations": "none",
+    // "scm.diffDecorations": "none",
     "workbench.tips.enabled": false,
     "editor.colorDecorators": false,
-    "git.decorations.enabled": false,
+    // "git.decorations.enabled": false,
     "workbench.startupEditor": "none",
     "editor.lightbulb.enabled": "off",
     "editor.selectionHighlight": false,
@@ -87,53 +87,36 @@
     "editor.padding.top": 16,
     "editor.cursorBlinking": "solid",
     "window.zoomLevel": 0.75,
-    // "window.titleBarStyle": "native",
-    // "window.customTitleBarVisibility": "never",
 
     // CSS
-    "vscode_custom_css.imports": [
-        "file:///C:/projects/personal/vscode/settings/style.css"
-    ],
+    "vscode_custom_css.imports": ["file:///F:/personal/config/style.css"],
+
     // Vim config
     "vim.useSystemClipboard": true,
+    "vim.foldfix": true,
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
     "vim.leader": "<Space>",
     "vim.normalModeKeyBindingsNonRecursive": [
-        // Rename symbol
-        { "before": ["leader", "r"], "commands": ["editor.action.rename"] },
-
-        // Capslock to Escape
-        { "before": ["leader", "leader"], "after": ["<Esc>"] },
-
-        // Indent using tab/S-Tab
-        { "before": ["<Tab>"], "commands": ["editor.action.indentLines"] },
-        { "before": ["<S-Tab>"], "commands": ["editor.action.outdentLines"] },
-
         // Navigate
         { "before": ["<C-h>"], "commands": [":bprevious"] },
         { "before": ["<C-l>"], "commands": [":bnext"] },
 
         // splits/panes
-        { "before": ["leader", "v"], "commands": [":vsplit"] },
         { "before": ["leader", "s"], "commands": [":split"] },
-        {
-            "before": ["leader", "h"],
-            "commands": ["workbench.action.focusLeftGroup"]
-        },
+
+        // Insert cursor below
         {
             "before": ["leader", "j"],
-            "commands": ["workbench.action.focusBelowGroup"]
-        },
-        {
-            "before": ["leader", "k"],
-            "commands": ["workbench.action.focusAboveGroup"]
-        },
-        {
-            "before": ["leader", "l"],
-            "commands": ["workbench.action.focusRightGroup"]
+            "commands": ["editor.action.insertCursorAbove"]
         },
 
-        // Save file
-        { "before": ["leader", "w"], "commands": [":w"] },
+        // Insert cursor above
+        {
+            "before": ["leader", "k"],
+            "commands": ["editor.action.insertCursorBelow"]
+        },
 
         // Comment in/out
         {
@@ -141,104 +124,47 @@
             "commands": ["editor.action.commentLine"]
         },
 
-        // Insert line above
-        {
-            "before": ["leader", "i"],
-            "commands": [
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": ["m", "z", "O", "<Esc>", "`", "z"]
-                    }
-                }
-            ]
-        },
-
         // Insert line below
         {
-            "before": ["leader", "I"],
-            "commands": [
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": ["m", "z", "O", "<Esc>", "`", "z"]
-                    }
-                }
-            ]
+            "before": ["leader", "o"],
+            "after": ["m", "z", "o", "<Esc>", "`", "z"]
         },
 
-        // Delete line above
+        // Insert line above
+        {
+            "before": ["leader", "O"],
+            "after": ["m", "z", "O", "<Esc>", "`", "z", "j"]
+        },
+
+        // Delete line
         {
             "before": ["leader", "d"],
-            "commands": [
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": ["m", "z", "k", "d", "d", "`", "z"]
-                    }
-                }
-            ]
+            "after": ["d", "d"]
         },
 
-        // Delete line below
+        // Rename symbol
         {
-            "before": ["leader", "D"],
-            "commands": [
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": ["m", "z", "k", "d", "d", "`", "z"]
-                    }
-                }
-            ]
-        },
-
-        // Search word under cursor
-        {
-            "before": ["leader", "a"],
-            "commands": [
-                {
-                    "command": "vim.remap",
-                    "args": {
-                        "after": ["/", "<C-r>", "<C-w>", "<CR>"]
-                    }
-                }
-            ]
-        },
-        {
-            // Sort selected lines
-            "before": ["<leader>", "s", "s"],
-            "commands": ["editor.action.sortLinesAscending"]
-        },
-        {
-            // Transform to uppercase
-            "before": ["<leader>", "u"],
-            "commands": ["editor.action.transformToUppercase"]
-        },
-        {
-            // Transform to lowercase
-            "before": ["<leader>", "l"],
-            "commands": ["editor.action.transformToLowercase"]
-        },
-        {
-            "before": ["leader", "q"],
-            "commands": ["workbench.action.closeWindow"]
-        },
-        {
-            "before": ["leader", "h"],
-            "commands": ["editor.action.showDefinitionPreviewHover"]
-        },
-        {
-            "before": ["leader", "<Enter>"],
-            "commands": ["editor.action.revealDefinition"]
-        },
-        {
-            "before": ["leader", "f"],
-            "commands": ["workbench.action.quickOpen"]
-        },
-        {
-            "before": ["leader", "p"],
-            "commands": ["workbench.action.showCommands"]
+            "before": ["leader", "r"],
+            "commands": ["editor.action.rename"]
+            // "after": [
+            //     "g",
+            //     "d",
+            //     "[",
+            //     "{",
+            //     "V",
+            //     "%",
+            //     ":",
+            //     "s",
+            //     "/",
+            //     "<C-r>",
+            //     "/",
+            //     "/",
+            //     "g",
+            //     "c",
+            //     "<left>",
+            //     "<left>",
+            //     "<left>"
+            // ]
         }
     ],
     "vim.visualModeKeyBindings": [
@@ -248,25 +174,11 @@
             "commands": ["editor.action.commentLine"]
         },
 
-        // Stay in visual mode while indenting
-        { "before": ["<Tab>"], "commands": ["editor.action.indentLines"] },
-        { "before": ["<S-Tab>"], "commands": ["editor.action.outdentLines"] },
         // Move selected lines while staying in visual mode
         { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
         { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] }
     ],
-
-    "vim.insertModeKeyBindings": [
-        // Navigate horizontally
-        {
-            "before": ["<C-h>"],
-            "commands": ["cursorLeft"]
-        },
-        {
-            "before": ["<C-l>"],
-            "commands": ["cursorRight"]
-        }
-    ],
+    "vim.insertModeKeyBindings": [],
 
     // Prettier
     "editor.tabSize": 4,
@@ -310,14 +222,7 @@
     // Use CLink terminal
     "terminal.integrated.profiles.windows": {
         "pwsh": {
-            // "overrideName": true,
             "path": "C:/Program Files/WindowsApps/Microsoft.PowerShell_7.5.1.0_x64__8wekyb3d8bbwe/pwsh.exe"
-            // "args": ["/k", "FULLPATH/clink.bat", "inject"]
-        },
-        "CLink": {
-            // "overrideName": true,
-            "path": "C:/Windows/system32/cmd.exe"
-            // "args": ["/k", "FULLPATH/clink.bat", "inject"]
         }
     },
     "terminal.integrated.defaultProfile.windows": "pwsh",

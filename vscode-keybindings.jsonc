@@ -1,0 +1,166 @@
+// Place your key bindings in this file to override the defaults
+[
+    // F13 bound to caps in AHK, bind to Escape
+    {
+        "key": "f13",
+        "command": "vim.remap",
+        "when": "inputFocus",
+        "args": {
+            "after": ["<Esc>"]
+        }
+    },
+
+    // Open projects with ctrl+shift+o
+    {
+        "key": "shift+ctrl+o",
+        "command": "workbench.action.openRecent"
+    },
+
+    // Navigate up-down when in editor that doesnt use vim
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.nextEditor",
+        "when": "!editorFocus"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.previousEditor",
+        "when": "!editorFocus"
+    },
+
+    // Navigate up-down in terminal
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+    },
+
+    // Navigate up-down in sidebar
+    {
+        "key": "ctrl+h",
+        "command": "workbench.view.extensions",
+        "when": "sideBarFocus && filesExplorerFocus"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.files.action.focusFilesExplorer",
+        "when": "sideBarFocus && searchViewletFocus"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.view.search",
+        "when": "sideBarFocus && activeViewlet == 'workbench.view.extensions'"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.view.search",
+        "when": "sideBarFocus && filesExplorerFocus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.view.extensions",
+        "when": "sideBarFocus && searchViewletFocus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.files.action.focusFilesExplorer",
+        "when": "sideBarFocus && activeViewlet == 'workbench.view.extensions'"
+    },
+
+    // Close editor/sidebar/terminal
+    {
+        "command": "workbench.action.closeActiveEditor",
+        "key": "ctrl+q"
+    },
+    {
+        "command": "workbench.action.closeEditorsToTheRight",
+        "key": "ctrl+shift+q"
+    },
+    {
+        "command": "workbench.action.toggleSidebarVisibility",
+        "key": "ctrl+q",
+        "when": "sideBarFocus"
+    },
+    {
+        "command": "workbench.action.terminal.kill",
+        "key": "ctrl+q",
+        "when": "terminalFocus"
+    },
+
+    // Focus file explorer, F14 bound to ctrl+e in AHK
+    {
+        "command": "workbench.files.action.focusFilesExplorer",
+        "key": "f14"
+    },
+    {
+        // command": "workbench.action.closeSidebar",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "key": "f14",
+        "when": "sideBarFocus && filesExplorerFocus"
+    },
+
+    // Focus terminal
+    {
+        "key": "ctrl+w",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.terminal.new",
+        "when": "terminal.active && terminalFocus"
+    },
+    {
+        "key": "ctrl+oem_3",
+        "command": "-workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+shift+oem_3",
+        "command": "-workbench.action.terminal.new",
+        "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+    },
+
+    // Focus folder search
+    {
+        "key": "ctrl+f",
+        "when": "sideBarFocus && filesExplorerFocus",
+        "command": "workbench.view.search"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "search.action.focusSearchList",
+        "when": "searchViewletFocus && inputBoxFocus"
+    },
+
+    // File explorer actions
+    {
+        "key": "n",
+        "command": "explorer.newFile",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "command": "renameFile",
+        "key": "r",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "explorer.newFolder",
+        "when": "explorerViewletFocus && !inputFocus"
+    },
+    {
+        "command": "deleteFile",
+        "key": "d",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "-workbench.action.togglePanel"
+    }
+]

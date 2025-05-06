@@ -11,6 +11,12 @@
     color: #cbd1e6 !important;
 }
 
+/* Git changed color */
+.monaco-workbench {
+    --vscode-editorGutter-modifiedBackground: #89b4fa;
+    --vscode-gitDecoration-modifiedResourceForeground: #89b4fa;
+}
+
 .titlebar-right {
     display: none !important;
 }

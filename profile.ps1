@@ -16,16 +16,16 @@ Set-PSReadLineOption -EditMode Windows
 
 # Fzf
 Import-Module PSFzf
-Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock {
-    $options = "--preview 'ls {}' --height 40% --layout reverse --border"
-    $path = Invoke-Expression "fd --type directory | fzf $options 2>&1"
+function cdf {
+    $directories = fd -t d -d 5 
+    $path = $directories | fzf --height 40% --layout reverse --border --preview 'ls {}'
     if ($path) {
-        Invoke-Expression "code $path"
+        Set-Location $path
     } 
 }
 
 # Utilities
-function which ($command) {
+function where ($command) {
   Get-Command -Name $command -ErrorAction SilentlyContinue |
     Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }

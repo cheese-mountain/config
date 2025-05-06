@@ -1,0 +1,2 @@
+start wt.exe
+exit
