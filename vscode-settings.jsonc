@@ -193,6 +193,7 @@
     "editor.detectIndentation": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "prettier.arrowParens": "avoid",
+    "prettier.semi": false,
     "prettier.singleQuote": true,
     "prettier.tabWidth": 4,
     "prettier.jsxSingleQuote": true,
