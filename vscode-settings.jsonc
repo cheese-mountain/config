@@ -131,18 +131,6 @@
             "commands": ["editor.action.commentLine"]
         },
 
-        // Insert line below
-        // {
-        //     "before": ["leader", "o"],
-        //     "after": ["m", "z", "o", "<Esc>", "`", "z"]
-        // },
-
-        // Insert line above
-        // {
-        //     "before": ["leader", "O"],
-        //     "after": ["m", "z", "O", "<Esc>", "`", "z", "j"]
-        // },
-
         // Rename symbol
         {
             "before": ["leader", "r"],
