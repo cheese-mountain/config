@@ -103,20 +103,26 @@
         // Navigate
         { "before": ["<C-h>"], "commands": [":bprevious"] },
         { "before": ["<C-l>"], "commands": [":bnext"] },
-
-        // splits/panes
-        { "before": ["leader", "s"], "commands": [":split"] },
-
-        // Insert cursor below
         {
-            "before": ["leader", "j"],
-            "commands": ["editor.action.insertCursorAbove"]
+            "before": ["leader", "<Tab>"],
+            "commands": [
+                "workbench.action.quickOpenPreviousRecentlyUsedEditor",
+                "list.select"
+            ]
         },
 
-        // Insert cursor above
+        // Center after moving verticaly half page up/down
+        { "before": ["<C-u>"], "after": ["<C-u>", "M"] },
+        { "before": ["<C-d>"], "after": ["<C-d>", "M"] },
+
+        // Disable ctrl f + b to unlearn it
+        { "before": ["<C-f>"], "after": [] },
+        { "before": ["<C-b>"], "after": [] },
+
+        // splits/panes
         {
-            "before": ["leader", "k"],
-            "commands": ["editor.action.insertCursorBelow"]
+            "before": ["leader", "s"],
+            "commands": ["workbench.action.toggleSplitEditorInGroup"]
         },
 
         // Comment in/out
@@ -126,22 +132,16 @@
         },
 
         // Insert line below
-        {
-            "before": ["leader", "o"],
-            "after": ["m", "z", "o", "<Esc>", "`", "z"]
-        },
+        // {
+        //     "before": ["leader", "o"],
+        //     "after": ["m", "z", "o", "<Esc>", "`", "z"]
+        // },
 
         // Insert line above
-        {
-            "before": ["leader", "O"],
-            "after": ["m", "z", "O", "<Esc>", "`", "z", "j"]
-        },
-
-        // Delete line
-        {
-            "before": ["leader", "d"],
-            "after": ["d", "d"]
-        },
+        // {
+        //     "before": ["leader", "O"],
+        //     "after": ["m", "z", "O", "<Esc>", "`", "z", "j"]
+        // },
 
         // Rename symbol
         {
@@ -175,9 +175,21 @@
             "commands": ["editor.action.commentLine"]
         },
 
+        // Insert cursor below
+        {
+            "before": ["leader", "j"],
+            "commands": ["editor.action.insertCursorAbove"]
+        },
+
+        // Insert cursor above
+        {
+            "before": ["leader", "k"],
+            "commands": ["editor.action.insertCursorBelow"]
+        },
+
         // Delete line without overriding yank register
         {
-            "before": ["leader", "d"],
+            "before": ["D"],
             "after": ["\"", "_", "d"]
         },
 
@@ -226,13 +238,16 @@
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    },
 
-    // Use CLink terminal
     "terminal.integrated.profiles.windows": {
         "pwsh": {
             "path": "C:/Program Files/WindowsApps/Microsoft.PowerShell_7.5.1.0_x64__8wekyb3d8bbwe/pwsh.exe"
         }
     },
     "terminal.integrated.defaultProfile.windows": "pwsh",
-    "terminal.integrated.fontFamily": "CaskaydiaCove Nerd Font"
+    "terminal.integrated.fontFamily": "CaskaydiaCove Nerd Font",
+    "workbench.editor.splitInGroupLayout": "vertical"
 }

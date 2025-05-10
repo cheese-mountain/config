@@ -15,29 +15,75 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Windows
 
 # Fzf
-Import-Module PSFzf
+# Import-Module PSFzf
 Import-Module PSEverything
-function cdf {
-    param(
-        [Parameter(ParameterSetName = "FindAll")]
-        [switch]$file
-    )
-    $filter = "folder:"
+
+function search($target) {
     $preview = "ls {}"
-    if ($file) {
-        $filter = "files:"
-        $preview = "bat --color=always --style=numbers --line-range=:500 {}"
-    }
-    $folders = Search-Everything -Filter $filter -PathExclude `
-        .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
-    $path = $folders | fzf --height 95% --layout reverse --border --preview $preview
-    if ($path) {
-        if ($file) {
-            Set-Location (Split-Path -Path $path -Parent)
-        } else {
-            Set-Location $path
+    switch ($target) {
+        "repo" {
+            $filter = @(".wp-cli", "scoop", "OtherParameters")
+            $repos = Search-Everything -regularexpression ^.git$
+            $items = foreach ($path in $repos) {
+                $skip = $false
+                foreach ($word in $filter) {
+                    if ($path -like "*$word*") {
+                        $skip = $true
+                        break
+                    }
+                }
+                
+                if (-not $skip) {
+                    Split-Path -Path $path -Parent
+                }
+            }
         }
-    } 
+        "folder" {
+            $items = Search-Everything -Filter "folder:" -PathExclude `
+                .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
+        }
+        "file" {
+            $preview = "bat --color=always --style=numbers --line-range=:500 {}"
+            $items = Search-Everything -Filter "file:" -PathExclude `
+                .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
+        }
+    }
+
+    return $items | fzf --height 95% --layout reverse --border --preview $preview
+}
+
+function fd {
+    param(
+        [Parameter(Position = 0)]
+        [ValidateSet("repo", "file", "folder")]
+        [string]$type = "repo"
+    )
+    $path = search($type)
+
+    if (!$path) { return }
+    if ($type -eq "files") {
+        Set-Location (Split-Path -Path $path -Parent)
+    } else {
+        Set-Location $path
+    }
+}
+
+function vsc {
+    param(
+        [Parameter(Position = 0)]
+        [ValidateSet("repo", "file", "folder", ".")]
+        [string]$type = "repo"
+    )
+
+    if ($type -eq ".") {
+        return code .
+    }
+
+    $path = search($type)
+
+    if ($path) {
+        code $path
+    }
 }
 
 # Utilities
