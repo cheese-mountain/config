@@ -1,4 +1,4 @@
-Run, wt.exe, F:\
+Run, wt.exe
 WinWait, ahk_exe WindowsTerminal.exe
 WinHide, ahk_exe WindowsTerminal.exe
 

@@ -2,37 +2,37 @@
 
 ## Table of Contents
 
-- [Installation](#installation)
+- [Getting Started](#getting-started)
 - [Terminal Setup](#terminal-setup)
 - [Keybindings](#keybindings)
 - [VSCode](#vscode)
 
-## Installation
+## Getting started
 
-To use this configuration repository:
+1. Install github cli & run gh auth login
+2. Clone the repo: ```gh repo clone cheese-mountain/config``
+3. Install all fonts under ./fonts
+4. Hide trashbin under Settings > Personalization > Themes > Desktop icon settings 
+5. Install windows powertoys
 
-1. Clone the repository: ``` git clone https://github.com/yourusername/config-repo.git %personal%/config ```
-2. Open repo and install fonts under ./fonts
-3. Follow the specific setup instructions in each section below.
-
-## Terminal Setup
+### Terminal Setup
 
 Follow these steps to set up the terminal environment:
 
-1. Install powershell, windows terminal, Everything & oh my posh
+1. Install neovim, fzf, latest powershell, windows terminal, Everything & oh my posh
 2. Copy paste windows terminal settings from windows-terminal.json
 3. Run ```Set-ExecutionPolicy RemoteSigned -Scope CurrentUser```
-4. add . I:\path\to\profile.ps1 to $PROFILE.CurrentUserCurrentHost
+4. Run nvim $profile & insert ```. I:\path\to\this\repo\profile.ps1```
 5. Run ```Install-Module PSEverything, "Terminal-Icons", PSFzf```
 
-## Keybindings
+### Keybindings
 
 Follow these steps to set up the keybindings:
 
-1. Scoop install sharpkeys, run sharpkeys & remap caps to esc
-2. Open task scheduler with Win + R, 'taskschd.msc' + Enter
-3. Schedule ./hotkeys/bindings.exe to run on login
+1. Install sharpkeys & autohotkey (version 1.1)
+2. Run sharpkeys & remap caps to esc
+2. Open task scheduler with Win + R, 'taskschd.msc' > Create Task. Trigger should be when logged in & action is to execute ./hotkeys/build.exe
 
-## VSCode
+### VSCode
 
 Login and sync
