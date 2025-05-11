@@ -1,6 +1,8 @@
 # set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
+Set-Alias -Name vim -Value nvim
+
 if ($host.Name -eq 'ConsoleHost') {
     Import-Module PSReadLine
 }
@@ -22,7 +24,7 @@ function search($target) {
     $preview = "ls {}"
     switch ($target) {
         "repo" {
-            $filter = @(".wp-cli", "scoop", "OtherParameters")
+            $filter = @(".wp-cli", "scoop", "OtherParameters", "AppData")
             $repos = Search-Everything -regularexpression ^.git$
             $items = foreach ($path in $repos) {
                 $skip = $false
@@ -87,7 +89,7 @@ function vsc {
 }
 
 # Utilities
-function where ($command) {
+function path ($command) {
   Get-Command -Name $command -ErrorAction SilentlyContinue |
     Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }

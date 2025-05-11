@@ -36,6 +36,7 @@
     },
 
     // Remove base junk
+    "editor.acceptSuggestionOnCommitCharacter": false,
     "workbench.tree.enableStickyScroll": false,
     "editor.stickyScroll.scrollWithEditor": false,
     "editor.stickyScroll.enabled": false,
@@ -71,6 +72,7 @@
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "editor.gotoLocation.multipleImplementations": "goto",
     "editor.gotoLocation.multipleTypeDefinitions": "goto",
+    // "editor.cursorSurroundingLines": 100,
 
     // Style config
     "workbench.colorTheme": "Catppuccin Mocha",
@@ -104,11 +106,17 @@
         { "before": ["<C-h>"], "commands": [":bprevious"] },
         { "before": ["<C-l>"], "commands": [":bnext"] },
         {
-            "before": ["leader", "<Tab>"],
+            "before": ["leader", "<Esc>"],
             "commands": [
                 "workbench.action.quickOpenPreviousRecentlyUsedEditor",
                 "list.select"
             ]
+        },
+
+        // Open new file with ctrl + n (useful for code running)
+        {
+            "before": ["C-n"],
+            "commands": ["workbench.action.files.newUntitledFile"]
         },
 
         // Center after moving verticaly half page up/down
@@ -125,6 +133,18 @@
             "commands": ["workbench.action.toggleSplitEditorInGroup"]
         },
 
+        // Insert cursor below
+        {
+            "before": ["leader", "j"],
+            "commands": ["editor.action.insertCursorBelow"]
+        },
+
+        // Insert cursor above
+        {
+            "before": ["leader", "k"],
+            "commands": ["editor.action.insertCursorAbove"]
+        },
+
         // Comment in/out
         {
             "before": ["leader", "c"],
@@ -135,44 +155,17 @@
         {
             "before": ["leader", "r"],
             "commands": ["editor.action.rename"]
-            // "after": [
-            //     "g",
-            //     "d",
-            //     "[",
-            //     "{",
-            //     "V",
-            //     "%",
-            //     ":",
-            //     "s",
-            //     "/",
-            //     "<C-r>",
-            //     "/",
-            //     "/",
-            //     "g",
-            //     "c",
-            //     "<left>",
-            //     "<left>",
-            //     "<left>"
-            // ]
         }
     ],
     "vim.visualModeKeyBindings": [
+        // Center after moving verticaly half page up/down
+        { "before": ["<C-u>"], "after": ["<C-u>", "M"] },
+        { "before": ["<C-d>"], "after": ["<C-d>", "M"] },
+
         // Comment in/out
         {
             "before": ["leader", "c"],
             "commands": ["editor.action.commentLine"]
-        },
-
-        // Insert cursor below
-        {
-            "before": ["leader", "j"],
-            "commands": ["editor.action.insertCursorAbove"]
-        },
-
-        // Insert cursor above
-        {
-            "before": ["leader", "k"],
-            "commands": ["editor.action.insertCursorBelow"]
         },
 
         // Delete line without overriding yank register

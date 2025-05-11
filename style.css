@@ -17,6 +17,7 @@
     --vscode-gitDecoration-modifiedResourceForeground: #89b4fa;
 }
 
+.editor-actions,
 .titlebar-right {
     display: none !important;
 }

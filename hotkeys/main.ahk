@@ -1,5 +1,8 @@
 #Requires AutoHotkey v1.1.33+
 
+; Run notion & chrome on start
+Run, % A_ScriptDir . "\shortcuts\n.lnk"
+Run, % A_ScriptDir . "\shortcuts\g.lnk"
 
 ; Globals
 DesktopCount := 2        ; Windows starts with 2 desktops at boot

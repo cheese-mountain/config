@@ -1,34 +1,28 @@
-; Start windows terminal minimized
-Run, wt.exe, F:\, Hide, WTpid
+Run, wt.exe, F:\
 WinWait, ahk_exe WindowsTerminal.exe
 WinHide, ahk_exe WindowsTerminal.exe
 
-showWT() {
+showTerminal() {
     DetectHiddenWindows, On
-    if WinExist("ahk_exe WindowsTerminal.exe") {
-        WinShow, ahk_exe WindowsTerminal.exe
-        WinActivate, ahk_exe WindowsTerminal.exe
-    } else {
-        Run, wt.exe, F:\, Hide, WTpid
-        WinWait, ahk_exe WindowsTerminal.exe
-        WinShow, ahk_exe WindowsTerminal.exe
-        WinActivate, ahk_exe WindowsTerminal.exe
-    }
+    WinWait, ahk_exe WindowsTerminal.exe
+    WinShow, ahk_exe WindowsTerminal.exe
+    WinActivate, ahk_exe WindowsTerminal.exe
     DetectHiddenWindows, Off
 }
 
-hideWT() {
-    global CurrentDesktop
+hideTerminal() {
     DetectHiddenWindows, On
-    if WinExist("ahk_exe WindowsTerminal.exe") {
-        WinHide, ahk_exe WindowsTerminal.exe
-        updateGlobalVariables()
-        focusTheForemostWindow(CurrentDesktop)
-    }
+    WinWait, ahk_exe WindowsTerminal.exe
+    WinMinimize, ahk_exe WindowsTerminal.exe
     DetectHiddenWindows, Off
 }
 
-; Intercept Alt+F4 for Windows Terminal
-#IfWinActive ahk_exe WindowsTerminal.exe
-!F4::hideWT()
-#IfWinActive
+fd() {
+    showTerminal()
+    SendInput, fd{Enter}
+}
+
+vsc() {
+    showTerminal()
+    SendInput, vsc{Enter}
+}

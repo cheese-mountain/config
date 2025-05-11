@@ -1,15 +1,5 @@
 // Place your key bindings in this file to override the defaults
 [
-    // F13 bound to caps in AHK, bind to Escape
-    {
-        "key": "f13",
-        "command": "vim.remap",
-        "when": "inputFocus",
-        "args": {
-            "after": ["<Esc>"]
-        }
-    },
-
     // Open projects with ctrl+shift+o
     {
         "key": "shift+ctrl+o",

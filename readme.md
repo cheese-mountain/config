@@ -29,8 +29,9 @@ Follow these steps to set up the terminal environment:
 
 Follow these steps to set up the keybindings:
 
-1. Open task scheduler with Win + R, 'taskschd.msc' + Enter
-2. Schedule ./hotkeys/bindings.exe to run on login
+1. Scoop install sharpkeys, run sharpkeys & remap caps to esc
+2. Open task scheduler with Win + R, 'taskschd.msc' + Enter
+3. Schedule ./hotkeys/bindings.exe to run on login
 
 ## VSCode
 
