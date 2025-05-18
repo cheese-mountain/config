@@ -124,7 +124,7 @@
         { "before": ["<C-d>"], "after": ["<C-d>", "M"] },
 
         // Disable ctrl f + b to unlearn it
-        { "before": ["<C-f>"], "after": [] },
+        { "before": ["<C-f>"], "commands": ["workbench.view.search"] },
         { "before": ["<C-b>"], "after": [] },
 
         // splits/panes
@@ -230,5 +230,6 @@
     },
     "terminal.integrated.defaultProfile.windows": "pwsh",
     "terminal.integrated.fontFamily": "CaskaydiaCove Nerd Font",
-    "workbench.editor.splitInGroupLayout": "vertical"
+    "workbench.editor.splitInGroupLayout": "vertical",
+    "npm.packageManager": "pnpm"
 }

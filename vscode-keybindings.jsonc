@@ -88,10 +88,31 @@
         "key": "f14"
     },
     {
-        // command": "workbench.action.closeSidebar",
         "command": "workbench.action.focusActiveEditorGroup",
         "key": "f14",
         "when": "sideBarFocus && filesExplorerFocus"
+    },
+
+    // Focus search
+    {
+        "key": "ctrl+f",
+        "command": "-actions.find",
+        "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "ctrl+f",
+        "when": "sideBarFocus",
+        "command": "workbench.view.search"
+    },
+    {
+        "command": "workbench.action.focusActiveEditorGroup",
+        "key": "ctrl+f",
+        "when": "sideBarFocus && searchViewletFocus "
+    },
+    {
+        "key": "enter",
+        "command": "search.action.focusSearchList",
+        "when": "searchViewletFocus && inputBoxFocus"
     },
 
     // Focus terminal
@@ -114,18 +135,6 @@
         "key": "ctrl+shift+oem_3",
         "command": "-workbench.action.terminal.new",
         "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
-    },
-
-    // Focus folder search
-    {
-        "key": "ctrl+f",
-        "when": "sideBarFocus && filesExplorerFocus",
-        "command": "workbench.view.search"
-    },
-    {
-        "key": "ctrl+f",
-        "command": "search.action.focusSearchList",
-        "when": "searchViewletFocus && inputBoxFocus"
     },
 
     // File explorer actions
@@ -152,5 +161,10 @@
     {
         "key": "ctrl+j",
         "command": "-workbench.action.togglePanel"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "-workbench.action.terminal.focusFind",
+        "when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocusInAny && terminalHasBeenCreated || terminalFocusInAny && terminalProcessSupported"
     }
 ]

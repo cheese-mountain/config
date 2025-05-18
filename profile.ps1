@@ -21,7 +21,9 @@ Set-PSReadLineOption -EditMode Windows
 Import-Module PSEverything
 
 function search($target) {
-    $preview = "ls {}"
+    $preview = @("--preview", "ls {}")
+    $base_options = @("--height", "95%", "--layout", "reverse")
+    $options = @("--border")
     switch ($target) {
         "repo" {
             $filter = @(".wp-cli", "scoop", "OtherParameters", "AppData")
@@ -45,25 +47,39 @@ function search($target) {
                 .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
         }
         "file" {
-            $preview = "bat --color=always --style=numbers --line-range=:500 {}"
+            $preview = @("--preview", "bat --color=always --style=numbers --line-range=:500 {}")
             $items = Search-Everything -Filter "file:" -PathExclude `
                 .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
         }
+        "text" {
+            # $eview = @("--preview", "bat --color=always {1} --highlight-line {2}")
+            # $ripgrep = "change:reload: rg --column --line-number --no-heading --color=always --smart-case {q} || cd ."
+            $rg = "rg --column --line-number --no-heading --color=always --smart-case"
+            $reload = "reload: $rg {q} || cd ."
+            $preview = @("--preview", "bat --color=always --style=numbers --highlight-line {2} {1}")
+            $options = @(
+                "--ansi", "--disabled", "--delimiter", ":",
+                "--bind", "start:$reload", "--bind", "change:$reload", 
+                 "--preview-window", "up,60%,border-bottom"
+            )
+            $items = "$rg """""
+        }
     }
 
-    return $items | fzf --height 95% --layout reverse --border --preview $preview
+    $fzf = $base_options + $options + $preview
+    return $items | fzf @fzf 
 }
 
 function fd {
     param(
         [Parameter(Position = 0)]
-        [ValidateSet("repo", "file", "folder")]
+        [ValidateSet("repo", "file", "folder", "text")]
         [string]$type = "repo"
     )
     $path = search($type)
 
     if (!$path) { return }
-    if ($type -eq "files") {
+    if ($type -eq "file") {
         Set-Location (Split-Path -Path $path -Parent)
     } else {
         Set-Location $path
