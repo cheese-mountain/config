@@ -6,31 +6,58 @@
         "command": "workbench.action.openRecent"
     },
 
-    // Navigate up-down when in editor that doesnt use vim
+    // Pin/unpin with ctrl+p
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.pinEditor"
+    },
+    {
+        "key": "ctrl+p",
+        "when": "editorFocus && activeEditorIsPinned",
+        "command": "workbench.action.unpinEditor"
+    },
+
+    // Import leader hotkey
+    {
+        "key": "ctrl+i",
+        "command": "editor.action.sourceAction",
+        "when": "editorFocus",
+        "args": {
+            "kind": "source.addMissingImports",
+            "apply": "first"
+        }
+    },
+
+    // Quick search
+    {
+        "key": "ctrl+f",
+        "command": "workbench.action.quickTextSearch",
+        "when": "searchViewletFocus && inputBoxFocus"
+    },
+
+    // Navigate left-right when in editor that doesnt use vim
     {
         "key": "ctrl+l",
-        "command": "workbench.action.nextEditor",
-        "when": "!editorFocus"
+        "command": "workbench.action.nextEditor"
     },
     {
         "key": "ctrl+h",
-        "command": "workbench.action.previousEditor",
-        "when": "!editorFocus"
+        "command": "workbench.action.previousEditor"
     },
 
     // Navigate up-down in terminal
     {
-        "key": "ctrl+l",
+        "key": "ctrl+j",
         "command": "workbench.action.terminal.focusNext",
         "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
     },
     {
-        "key": "ctrl+h",
+        "key": "ctrl+k",
         "command": "workbench.action.terminal.focusPrevious",
         "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
     },
 
-    // Navigate up-down in sidebar
+    // Navigate left-right in sidebar
     {
         "key": "ctrl+h",
         "command": "workbench.view.extensions",
@@ -64,12 +91,8 @@
 
     // Close editor/sidebar/terminal
     {
-        "command": "workbench.action.closeActiveEditor",
+        "command": "workbench.action.closeAllEditors",
         "key": "ctrl+w"
-    },
-    {
-        "command": "workbench.action.closeEditorsToTheRight",
-        "key": "ctrl+shift+w"
     },
     {
         "command": "workbench.action.toggleSidebarVisibility",
@@ -82,42 +105,31 @@
         "when": "terminalFocus"
     },
 
-    // Focus file explorer, F14 bound to ctrl+e in AHK
-    {
-        "command": "workbench.files.action.focusFilesExplorer",
-        "key": "f14"
-    },
-    {
-        "command": "workbench.action.focusActiveEditorGroup",
-        "key": "f14",
-        "when": "sideBarFocus && filesExplorerFocus"
-    },
-
     // Focus search
     {
         "key": "ctrl+f",
         "command": "-actions.find",
         "when": "editorFocus || editorIsOpen"
     },
-    {
-        "key": "ctrl+f",
-        "when": "sideBarFocus",
-        "command": "workbench.view.search"
-    },
-    {
-        "command": "workbench.action.focusActiveEditorGroup",
-        "key": "ctrl+f",
-        "when": "sideBarFocus && searchViewletFocus "
-    },
-    {
-        "key": "enter",
-        "command": "search.action.focusSearchList",
-        "when": "searchViewletFocus && inputBoxFocus"
-    },
+    // {
+    //     "key": "ctrl+f",
+    //     "when": "sideBarFocus",
+    //     "command": "workbench.view.search"
+    // },
+    // {
+    //     "command": "workbench.action.focusActiveEditorGroup",
+    //     "key": "ctrl+f",
+    //     "when": "sideBarFocus && searchViewletFocus "
+    // },
+    // {
+    //     "key": "enter",
+    //     "command": "search.action.focusSearchList",
+    //     "when": "searchViewletFocus && inputBoxFocus"
+    // },
 
     // Focus terminal
     {
-        "key": "ctrl+m",
+        "key": "alt+1",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "terminal.active"
     },
@@ -137,10 +149,35 @@
         "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
     },
 
+    // Focus editor
+    {
+        "command": "workbench.action.focusActiveEditorGroup",
+        "key": "alt+3"
+    },
+
     // File explorer actions
+    {
+        "command": "workbench.files.action.focusFilesExplorer",
+        "key": "alt+2"
+    },
+    {
+        "command": "workbench.action.focusActiveEditorGroup",
+        "key": "alt+2",
+        "when": "sideBarFocus && filesExplorerFocus"
+    },
     {
         "key": "n",
         "command": "explorer.newFile",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "c",
+        "command": "list.collapse",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "shift+c",
+        "command": "workbench.files.action.collapseExplorerFolders",
         "when": "filesExplorerFocus && !inputFocus"
     },
     {

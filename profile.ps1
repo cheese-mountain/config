@@ -16,16 +16,13 @@ Import-Module -Name Terminal-Icons
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Windows
 
-# Fzf
-# Import-Module PSFzf
-Import-Module PSEverything
-
+# Search r (repo), d (directory), f (file) or t (text)
 function search($target) {
     $preview = @("--preview", "ls {}")
     $base_options = @("--height", "95%", "--layout", "reverse")
     $options = @("--border")
     switch ($target) {
-        "repo" {
+        "r" {
             $filter = @(".wp-cli", "scoop", "OtherParameters", "AppData")
             $repos = Search-Everything -regularexpression ^.git$
             $items = foreach ($path in $repos) {
@@ -42,16 +39,16 @@ function search($target) {
                 }
             }
         }
-        "folder" {
+        "d" {
             $items = Search-Everything -Filter "folder:" -PathExclude `
                 .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
         }
-        "file" {
+        "f" {
             $preview = @("--preview", "bat --color=always --style=numbers --line-range=:500 {}")
             $items = Search-Everything -Filter "file:" -PathExclude `
                 .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
         }
-        "text" {
+        "t" {
             # $eview = @("--preview", "bat --color=always {1} --highlight-line {2}")
             # $ripgrep = "change:reload: rg --column --line-number --no-heading --color=always --smart-case {q} || cd ."
             $rg = "rg --column --line-number --no-heading --color=always --smart-case"
@@ -73,13 +70,13 @@ function search($target) {
 function fd {
     param(
         [Parameter(Position = 0)]
-        [ValidateSet("repo", "file", "folder", "text")]
-        [string]$type = "repo"
+        [ValidateSet("r", "f", "d", "t")]
+        [string]$type = "d"
     )
     $path = search($type)
 
     if (!$path) { return }
-    if ($type -eq "file") {
+    if ($type -eq "f") {
         Set-Location (Split-Path -Path $path -Parent)
     } else {
         Set-Location $path
@@ -89,8 +86,8 @@ function fd {
 function vsc {
     param(
         [Parameter(Position = 0)]
-        [ValidateSet("repo", "file", "folder", ".")]
-        [string]$type = "repo"
+        [ValidateSet("r", "f", "d", "t", ".")]
+        [string]$type = "r"
     )
 
     if ($type -eq ".") {

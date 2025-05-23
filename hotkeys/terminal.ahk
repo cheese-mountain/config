@@ -15,14 +15,19 @@ hideTerminal() {
     WinWait, ahk_exe WindowsTerminal.exe
     WinMinimize, ahk_exe WindowsTerminal.exe
     DetectHiddenWindows, Off
+    WinActivate
 }
 
-fd() {
-    showTerminal()
-    SendInput, fd{Enter}
+fd(char) {
+    if (GetKeyState("Alt")) {
+        showTerminal()
+        SendInput, fd %char%{Enter}
+    }
 }
 
-vsc() {
-    showTerminal()
-    SendInput, vsc{Enter}
+vsc(char) {
+    if (GetKeyState("Alt")) {
+        showTerminal()
+        SendInput, vsc %char%{Enter}
+    }
 }

@@ -12,8 +12,12 @@
 1. Install github cli & run gh auth login
 2. Clone the repo: ```gh repo clone cheese-mountain/config``
 3. Install all fonts under ./fonts
-4. Hide trashbin under Settings > Personalization > Themes > Desktop icon settings 
-5. Install windows powertoys
+
+## General customization
+1. Set background.png as desktop background
+2. Hide trashbin under Settings > Personalization > Themes > Desktop icon settings 
+3. Uncheck animate minimize closing of windows & shadow under Advanced System settings > Performance settings
+4. Install windows powertoys
 
 ### Terminal Setup
 

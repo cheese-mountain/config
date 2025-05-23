@@ -42,21 +42,18 @@
     "editor.stickyScroll.enabled": false,
     "editor.copyWithSyntaxHighlighting": false,
     "workbench.activityBar.location": "hidden",
-    "workbench.statusBar.visible": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "workbench.editor.enablePreview": false,
     "window.newWindowDimensions": "inherit",
-    "diffEditor.renderSideBySide": false,
+    "diffEditor.renderSideBySide": true,
     "editor.snippetSuggestions": "top",
     "files.insertFinalNewline": true,
     "editor.minimap.enabled": false,
     "editor.lineNumbers": "relative",
     "editor.guides.indentation": false,
     "breadcrumbs.enabled": false,
-    // "scm.diffDecorations": "none",
     "workbench.tips.enabled": false,
     "editor.colorDecorators": false,
-    // "git.decorations.enabled": false,
     "workbench.startupEditor": "none",
     "editor.lightbulb.enabled": "off",
     "editor.selectionHighlight": false,
@@ -72,12 +69,12 @@
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "editor.gotoLocation.multipleImplementations": "goto",
     "editor.gotoLocation.multipleTypeDefinitions": "goto",
-    // "editor.cursorSurroundingLines": 100,
 
     // Style config
     "workbench.colorTheme": "Catppuccin Mocha",
     "workbench.iconTheme": "catppuccin-mocha",
     "catppuccin.accentColor": "blue",
+    "catppuccin.italicKeywords": false,
     "editor.fontFamily": "Dank Mono",
     "editor.fontSize": 16,
     "editor.lineHeight": 24,
@@ -94,6 +91,7 @@
     "vscode_custom_css.imports": ["file:///F:/personal/config/style.css"],
 
     // Vim config
+    "keyboard.mapAltGrToCtrlAlt": true,
     "vim.useSystemClipboard": true,
     "vim.foldfix": true,
     "vim.surround": true,
@@ -102,11 +100,11 @@
     },
     "vim.leader": "<Space>",
     "vim.normalModeKeyBindingsNonRecursive": [
-        // Navigate
-        { "before": ["<C-h>"], "commands": [":bprevious"] },
-        { "before": ["<C-l>"], "commands": [":bnext"] },
+        // // Navigate
+        // { "before": ["<C-h>"], "commands": [":bprevious"] },
+        // { "before": ["<C-l>"], "commands": [":bnext"] },
         {
-            "before": ["leader", "<Esc>"],
+            "before": ["leader", "leader"],
             "commands": [
                 "workbench.action.quickOpenPreviousRecentlyUsedEditor",
                 "list.select"
@@ -119,19 +117,15 @@
             "commands": ["workbench.action.files.newUntitledFile"]
         },
 
+        // Disable ctrl f
+        {
+            "before": ["<C-f>"],
+            "commands": ["workbench.action.quickTextSearch"]
+        },
+
         // Center after moving verticaly half page up/down
         { "before": ["<C-u>"], "after": ["<C-u>", "M"] },
         { "before": ["<C-d>"], "after": ["<C-d>", "M"] },
-
-        // Disable ctrl f + b to unlearn it
-        { "before": ["<C-f>"], "commands": ["workbench.view.search"] },
-        { "before": ["<C-b>"], "after": [] },
-
-        // splits/panes
-        {
-            "before": ["leader", "s"],
-            "commands": ["workbench.action.toggleSplitEditorInGroup"]
-        },
 
         // Insert cursor below
         {
@@ -156,6 +150,12 @@
             "before": ["leader", "r"],
             "commands": ["editor.action.rename"]
         }
+
+        // // Import module
+        // {
+        //     "before": ["leader", "i"],
+        //     "commands": ["editor.action."]
+        // }
     ],
     "vim.visualModeKeyBindings": [
         // Center after moving verticaly half page up/down
@@ -166,6 +166,12 @@
         {
             "before": ["leader", "c"],
             "commands": ["editor.action.commentLine"]
+        },
+
+        // Paste over line without ovverriding yank register
+        {
+            "before": ["<leader>", "p"],
+            "after": ["\"", "_", "d", "P"]
         },
 
         // Delete line without overriding yank register
