@@ -14,7 +14,7 @@ VKBA::Send, {^}{Space}
 #If
 
 ; Show terminal with altgr + Space
-<^>!Space::showTerminal()
+#Space::showTerminal()
 
 ; Search by (r)epo (f)ile (d)irectory (t)ext
 ; Open in directory 
