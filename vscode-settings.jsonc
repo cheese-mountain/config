@@ -100,11 +100,9 @@
     },
     "vim.leader": "<Space>",
     "vim.normalModeKeyBindingsNonRecursive": [
-        // // Navigate
-        // { "before": ["<C-h>"], "commands": [":bprevious"] },
-        // { "before": ["<C-l>"], "commands": [":bnext"] },
+        // Got to last used editor
         {
-            "before": ["leader", "leader"],
+            "before": ["leader", "l"],
             "commands": [
                 "workbench.action.quickOpenPreviousRecentlyUsedEditor",
                 "list.select"
@@ -121,6 +119,12 @@
         {
             "before": ["<C-f>"],
             "commands": ["workbench.action.quickTextSearch"]
+        },
+
+        // Find & replace
+        {
+            "before": ["leader", "f"],
+            "commands": ["editor.action.startFindReplaceAction"]
         },
 
         // Center after moving verticaly half page up/down
@@ -162,6 +166,21 @@
         { "before": ["<C-u>"], "after": ["<C-u>", "M"] },
         { "before": ["<C-d>"], "after": ["<C-d>", "M"] },
 
+        // Got to last used editor
+        {
+            "before": ["leader", "l"],
+            "commands": [
+                "workbench.action.quickOpenPreviousRecentlyUsedEditor",
+                "list.select"
+            ]
+        },
+
+        // Find & replace
+        {
+            "before": ["leader", "f"],
+            "commands": ["editor.action.startFindReplaceAction"]
+        },
+
         // Comment in/out
         {
             "before": ["leader", "c"],
@@ -185,6 +204,20 @@
         { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] }
     ],
     "vim.insertModeKeyBindings": [],
+
+    // Teminal
+    "terminal.integrated.commandsToSkipShell": [
+        "workbench.files.action.focusFilesExplorer",
+        "workbench.action.quickTextSearch"
+    ],
+    "terminal.integrated.profiles.windows": {
+        "pwsh": {
+            "path": "C:/Program Files/WindowsApps/Microsoft.PowerShell_7.5.1.0_x64__8wekyb3d8bbwe/pwsh.exe"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "pwsh",
+    "terminal.integrated.fontFamily": "CaskaydiaCove Nerd Font",
+    "workbench.editor.splitInGroupLayout": "vertical",
 
     // Prettier
     "editor.tabSize": 4,
@@ -229,13 +262,5 @@
         "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
     },
 
-    "terminal.integrated.profiles.windows": {
-        "pwsh": {
-            "path": "C:/Program Files/WindowsApps/Microsoft.PowerShell_7.5.1.0_x64__8wekyb3d8bbwe/pwsh.exe"
-        }
-    },
-    "terminal.integrated.defaultProfile.windows": "pwsh",
-    "terminal.integrated.fontFamily": "CaskaydiaCove Nerd Font",
-    "workbench.editor.splitInGroupLayout": "vertical",
     "npm.packageManager": "pnpm"
 }

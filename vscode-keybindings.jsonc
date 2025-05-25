@@ -31,8 +31,7 @@
     // Quick search
     {
         "key": "ctrl+f",
-        "command": "workbench.action.quickTextSearch",
-        "when": "searchViewletFocus && inputBoxFocus"
+        "command": "workbench.action.quickTextSearch"
     },
 
     // Navigate left-right when in editor that doesnt use vim
@@ -127,12 +126,49 @@
     //     "when": "searchViewletFocus && inputBoxFocus"
     // },
 
-    // Focus terminal
+    // Focus terminal/editor/file explorer
     {
         "key": "alt+1",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "terminal.active"
     },
+    {
+        "command": "workbench.files.action.focusFilesExplorer",
+        "key": "alt+2"
+    },
+    {
+        "command": "workbench.action.focusActiveEditorGroup",
+        "key": "alt+2",
+        "when": "sideBarFocus && filesExplorerFocus"
+    },
+    {
+        "command": "workbench.action.focusActiveEditorGroup",
+        "key": "alt+3"
+    },
+
+    // Focus different editors with ctrl 1-5
+    {
+        "key": "ctrl+1",
+        "command": "workbench.action.openEditorAtIndex1"
+    },
+    {
+        "key": "ctrl+2",
+        "command": "workbench.action.openEditorAtIndex2"
+    },
+    {
+        "key": "ctrl+3",
+        "command": "workbench.action.openEditorAtIndex3"
+    },
+    {
+        "key": "ctrl+4",
+        "command": "workbench.action.openEditorAtIndex4"
+    },
+    {
+        "key": "ctrl+5",
+        "command": "workbench.action.openEditorAtIndex5"
+    },
+
+    // Terminal actions
     {
         "key": "ctrl+n",
         "command": "workbench.action.terminal.new",
@@ -149,22 +185,7 @@
         "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
     },
 
-    // Focus editor
-    {
-        "command": "workbench.action.focusActiveEditorGroup",
-        "key": "alt+3"
-    },
-
     // File explorer actions
-    {
-        "command": "workbench.files.action.focusFilesExplorer",
-        "key": "alt+2"
-    },
-    {
-        "command": "workbench.action.focusActiveEditorGroup",
-        "key": "alt+2",
-        "when": "sideBarFocus && filesExplorerFocus"
-    },
     {
         "key": "n",
         "command": "explorer.newFile",
@@ -203,5 +224,9 @@
         "key": "ctrl+f",
         "command": "-workbench.action.terminal.focusFind",
         "when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocusInAny && terminalHasBeenCreated || terminalFocusInAny && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "-editor.action.toggleTabFocusMode"
     }
 ]

@@ -1,5 +1,8 @@
 SetCapsLockState, AlwaysOff
 
+; Send caret with one press
+VKBA::Send, {^}{Space}
+
 ; Bind Caps + w to close current window
 #If, WinActive("ahk_exe WindowsTerminal.exe")
 !w::hideTerminal()
@@ -15,16 +18,16 @@ SetCapsLockState, AlwaysOff
 
 ; Search by (r)epo (f)ile (d)irectory (t)ext
 ; Open in directory 
-~f & r::fd("r")
-~f & f::fd("f")
-~f & d::fd("d")
-~f & t::fd("t")
+~f & ~r::fd("r")
+~f & ~f::fd("f")
+~f & ~d::fd("d")
+~f & ~t::fd("t")
 
 ; Open in editor (fscode)
-~e & r::vsc("r")
-~e & f::vsc("f")
-~e & d::vsc("d")
-~e & t::vsc("t")
+~e & ~r::vsc("r")
+~e & ~f::vsc("f")
+~e & ~d::vsc("d")
+~e & ~t::vsc("t")
 
 ; Bind Caps + h/j/k/l to ←/↓/↑/→ 
 Esc & h::send, {Blind}{Left}
@@ -33,6 +36,7 @@ Esc & k::send, {Blind}{Up}
 Esc & l::send, {Blind}{Right}
 
 ; Navigate virtual windows with caps 
+~Space & Esc::switchDesktopToLastOpened()
 Esc & Space::switchDesktopToLastOpened()
 
 ; move window to target desktop number if alt is pressed, else switch view to it

@@ -1,6 +1,8 @@
 # set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
+$global:downloads = "G:\data\downloads"
+
 Set-Alias -Name vim -Value nvim
 
 if ($host.Name -eq 'ConsoleHost') {
@@ -73,6 +75,9 @@ function fd {
         [ValidateSet("r", "f", "d", "t")]
         [string]$type = "d"
     )
+
+    Clear-Host
+     
     $path = search($type)
 
     if (!$path) { return }
@@ -90,6 +95,8 @@ function vsc {
         [string]$type = "r"
     )
 
+    Clear-Host
+     
     if ($type -eq ".") {
         return code .
     }
