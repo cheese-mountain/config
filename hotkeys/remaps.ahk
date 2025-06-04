@@ -13,8 +13,11 @@ VKBA::Send, {^}{Space}
     return
 #If
 
-; Show terminal with altgr + Space
+; Show terminal with win + Space
 #Space::showTerminal()
+
+; Send f13 with altgr + space
+<^>!Space::send, {F13}
 
 ; Search by (r)epo (f)ile (d)irectory (t)ext
 ; Open in directory 
@@ -36,8 +39,7 @@ Esc & k::send, {Blind}{Up}
 Esc & l::send, {Blind}{Right}
 
 ; Navigate virtual windows with caps 
-~Space & Esc::switchDesktopToLastOpened()
-Esc & Space::switchDesktopToLastOpened()
+^Space::switchDesktopToLastOpened()
 
 ; move window to target desktop number if alt is pressed, else switch view to it
 switchOrMoveTo(i) {

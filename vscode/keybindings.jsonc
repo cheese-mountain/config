@@ -1,5 +1,11 @@
 // Place your key bindings in this file to override the defaults
 [
+    // Show WT
+    {
+        "key": "ctrl+shift+b",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Toggle Windows Terminal"
+    },
     // Open projects with ctrl+shift+o
     {
         "key": "shift+ctrl+o",

@@ -74,6 +74,7 @@
     "workbench.colorTheme": "Catppuccin Mocha",
     "workbench.iconTheme": "catppuccin-mocha",
     "catppuccin.accentColor": "blue",
+    "catppuccin.italicComments": false,
     "catppuccin.italicKeywords": false,
     "editor.fontFamily": "Dank Mono",
     "editor.fontSize": 16,
@@ -88,7 +89,9 @@
     "window.zoomLevel": 0.75,
 
     // CSS
-    "vscode_custom_css.imports": ["file:///F:/personal/config/style.css"],
+    "vscode_custom_css.imports": [
+        "file:///F:/personal/config/vscode/style.css"
+    ],
 
     // Vim config
     "keyboard.mapAltGrToCtrlAlt": true,
@@ -262,5 +265,6 @@
         "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
     },
 
-    "npm.packageManager": "pnpm"
+    "npm.packageManager": "pnpm",
+    "git.openRepositoryInParentFolders": "always"
 }

@@ -23,11 +23,11 @@
 
 Follow these steps to set up the terminal environment:
 
-1. Install neovim, fzf, latest powershell, windows terminal, Everything & oh my posh
-2. Copy paste windows terminal settings from windows-terminal.json
+1. Install neovim, fzf, latest powershell, windows terminal, Search Everything & oh my posh
+2. Copy paste windows terminal settings from windows/terminal.json
 3. Run ```Set-ExecutionPolicy RemoteSigned -Scope CurrentUser```
-4. Run nvim $profile & insert ```. I:\path\to\this\repo\profile.ps1```
-5. Run ```Install-Module PSEverything, "Terminal-Icons", PSFzf```
+4. Run nvim $profile & insert ```. T:\path\to\this\repo\profile.ps1```
+5. Run ```Install-Module PSEverything, "Terminal-Icons"```
 
 ### Keybindings
 
@@ -39,4 +39,6 @@ Follow these steps to set up the keybindings:
 
 ### VSCode
 
-Login and sync
+Either:
+a) Login and it will auto sync for you
+b) copy settings under vscode/*.json
