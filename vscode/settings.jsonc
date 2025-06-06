@@ -112,6 +112,9 @@
             ]
         },
 
+        // Bind Y to y$
+        { "before": ["Y"], "after": ["y", "$"] },
+
         // Open new file with ctrl + n (useful for code running)
         {
             "before": ["C-n"],
