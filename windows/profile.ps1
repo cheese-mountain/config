@@ -19,10 +19,11 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Windows
 
 # Search r (repo), d (directory), f (file) or t (text)
-function search($target) {
+function search($target, $all = $false) {
     $preview = @("--preview", "ls {}")
     $base_options = @("--height", "95%", "--layout", "reverse")
     $options = @("--border")
+
     switch ($target) {
         "r" {
             $filter = @(".wp-cli", "scoop", "OtherParameters", "AppData")
@@ -42,18 +43,28 @@ function search($target) {
             }
         }
         "d" {
-            $items = Search-Everything -Filter "folder:" -PathExclude `
-                .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
+            if ($all) {
+                $items = Search-Everything -Filter "folder:"
+            } else {
+                $items = Search-Everything -Filter "folder:" -PathExclude `
+                    .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
+            }
         }
         "f" {
             $preview = @("--preview", "bat --color=always --style=numbers --line-range=:500 {}")
-            $items = Search-Everything -Filter "file:" -PathExclude `
-                .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
+            if ($all) {
+                $items = Search-Everything -Filter "file:"
+            } else {
+                $items = Search-Everything -Filter "file:" -PathExclude `
+                    .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
+            }
         }
         "t" {
-            # $eview = @("--preview", "bat --color=always {1} --highlight-line {2}")
-            # $ripgrep = "change:reload: rg --column --line-number --no-heading --color=always --smart-case {q} || cd ."
-            $rg = "rg --column --line-number --no-heading --color=always --smart-case"
+            if ($all) {
+                $rg = "rg --column --line-number --no-heading --color=always --smart-case --hidden --no-ignore --unrestricted"
+            } else {
+                $rg = "rg --column --line-number --no-heading --color=always --smart-case"
+            }
             $reload = "reload: $rg {q} || cd ."
             $preview = @("--preview", "bat --color=always --style=numbers --highlight-line {2} {1}")
             $options = @(
@@ -73,12 +84,13 @@ function fd {
     param(
         [Parameter(Position = 0)]
         [ValidateSet("r", "f", "d", "t")]
-        [string]$type = "d"
+        [string]$type = "d",
+        [switch]$All
     )
 
     Clear-Host
      
-    $path = search($type)
+    $path = search $type $All
 
     if (!$path) { return }
     if ($type -eq "f") {
