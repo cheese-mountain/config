@@ -18,6 +18,7 @@
 2. Hide trashbin under Settings > Personalization > Themes > Desktop icon settings 
 3. Uncheck animate minimize closing of windows & shadow under Advanced System settings > Performance settings
 4. Install windows powertoys
+5. Add auto start apps to folder inside ```win + r shell:startup```
 
 ### Terminal Setup
 
