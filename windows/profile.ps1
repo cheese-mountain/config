@@ -23,6 +23,8 @@ function search($target, $all = $false) {
     $preview = @("--preview", "ls {}")
     $base_options = @("--height", "95%", "--layout", "reverse")
     $options = @("--border")
+    $wd = Get-Location
+    $at_root = $wd.Path -match '^[A-Za-z]:\\?$'
 
     switch ($target) {
         "r" {
@@ -45,6 +47,19 @@ function search($target, $all = $false) {
         "d" {
             if ($all) {
                 $items = Search-Everything -Filter "folder:"
+            } elseif ($at_root) {
+                $drives = Get-PSDrive -PSProvider FileSystem
+                $items = @()
+                foreach ($drive in $drives) {
+                    try {
+                        Set-Location "$($drive.Name):\"
+                        $items += Search-Everything -Filter "folder:" -PathExclude `
+                            .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
+                    } catch { 
+                        continue
+                    }
+                }
+                Set-Location $wd
             } else {
                 $items = Search-Everything -Filter "folder:" -PathExclude `
                     .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
@@ -54,6 +69,19 @@ function search($target, $all = $false) {
             $preview = @("--preview", "bat --color=always --style=numbers --line-range=:500 {}")
             if ($all) {
                 $items = Search-Everything -Filter "file:"
+            } elseif ($at_root) {
+                $drives = Get-PSDrive -PSProvider FileSystem
+                $items = @()
+                foreach ($drive in $drives) {
+                    try {
+                        Set-Location "$($drive.Name):\"
+                        $items += Search-Everything -Filter "file:" -PathExclude `
+                            .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
+                    } catch { 
+                        continue
+                    }
+                }
+                Set-Location $wd
             } else {
                 $items = Search-Everything -Filter "file:" -PathExclude `
                     .pnpm-store, node_modules, .git, .pnpm, RECYCLE.BIN
@@ -93,7 +121,7 @@ function fd {
     $path = search $type $All
 
     if (!$path) { return }
-    if ($type -eq "f") {
+    if ($type -in @("f", "t")) {
         Set-Location (Split-Path -Path $path -Parent)
     } else {
         Set-Location $path
