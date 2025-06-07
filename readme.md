@@ -22,8 +22,6 @@
 
 ### Terminal Setup
 
-Follow these steps to set up the terminal environment:
-
 1. Install neovim, fzf, latest powershell, windows terminal, Search Everything & oh my posh
 2. Copy paste windows terminal settings from windows/terminal.json
 3. Run ```Set-ExecutionPolicy RemoteSigned -Scope CurrentUser```
@@ -32,8 +30,6 @@ Follow these steps to set up the terminal environment:
 
 ### Keybindings
 
-Follow these steps to set up the keybindings:
-
 1. Install sharpkeys & autohotkey (version 1.1)
 2. Run sharpkeys & remap caps to esc
 2. Open task scheduler with Win + R, 'taskschd.msc' > Create Task. Trigger should be when logged in & action is to execute ./hotkeys/build.exe
@@ -41,5 +37,5 @@ Follow these steps to set up the keybindings:
 ### VSCode
 
 Either:
-a) Login and it will auto sync for you
+a) Login and it will auto sync for you or
 b) copy settings under vscode/*.json
