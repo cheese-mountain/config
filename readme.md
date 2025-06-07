@@ -10,7 +10,7 @@
 ## Getting started
 
 1. Install github cli & run gh auth login
-2. Clone the repo: ```gh repo clone cheese-mountain/config``
+2. Clone the repo: ```gh repo clone cheese-mountain/config```
 3. Install all fonts under ./fonts
 
 ## General customization
