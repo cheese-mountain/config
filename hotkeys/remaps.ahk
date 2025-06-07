@@ -13,11 +13,8 @@ VKBA::Send, {^}{Space}
     return
 #If
 
-; Show terminal with win + Space
-#Space::showTerminal()
-
-; Send f13 with altgr + space
-<^>!Space::send, {F13}
+; Send shift+u with altgr + space (used to open claude)
+<^>!Space::send, +u
 
 ; Search by (r)epo (f)ile (d)irectory (t)ext
 ; Open in directory 
