@@ -4,7 +4,7 @@
     "actions": [],
     "alwaysShowNotificationIcon": false,
     "autoHideWindow": true,
-    "centerOnLaunch": true,
+    "centerOnLaunch": false,
     "confirmCloseAllTabs": false,
     "copyFormatting": "none",
     "copyOnSelect": false,
@@ -12,20 +12,32 @@
     "initialPosition": ",",
     "keybindings": [
         {
-            "id": "Terminal.CopyToClipboard",
-            "keys": "ctrl+c"
-        },
-        {
             "id": "Terminal.OpenNewTab",
             "keys": "ctrl+t"
         },
         {
-            "id": null,
-            "keys": "ctrl+shift+w"
+            "id": "Terminal.CopyToClipboard",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "Terminal.FindText",
+            "keys": "ctrl+f"
+        },
+        {
+            "id": "Terminal.NextTab",
+            "keys": "ctrl+l"
+        },
+        {
+            "id": "Terminal.PrevTab",
+            "keys": "ctrl+h"
         },
         {
             "id": "Terminal.PasteFromClipboard",
             "keys": "ctrl+v"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+w"
         },
         {
             "id": "Terminal.DuplicatePaneAuto",
@@ -38,6 +50,42 @@
         {
             "id": "Terminal.ClosePane",
             "keys": "ctrl+w"
+        },
+        {
+            "id": "Terminal.SwitchToTab0",
+            "keys": "ctrl+1"
+        },
+        {
+            "id": "Terminal.SwitchToTab1",
+            "keys": "ctrl+2"
+        },
+        {
+            "id": "Terminal.SwitchToTab2",
+            "keys": "ctrl+3"
+        },
+        {
+            "id": "Terminal.SwitchToTab3",
+            "keys": "ctrl+4"
+        },
+        {
+            "id": "Terminal.SwitchToTab4",
+            "keys": "ctrl+5"
+        },
+        {
+            "id": "Terminal.SwitchToTab5",
+            "keys": "ctrl+6"
+        },
+        {
+            "id": "Terminal.SwitchToTab6",
+            "keys": "ctrl+7"
+        },
+        {
+            "id": "Terminal.SwitchToTab7",
+            "keys": "ctrl+8"
+        },
+        {
+            "id": "Terminal.SwitchToTab8",
+            "keys": "ctrl+9"
         }
     ],
     "minimizeToNotificationArea": true,
@@ -50,9 +98,11 @@
         "defaults": {
             "colorScheme": "One Half Modded",
             "font": {
-                "face": "CaskaydiaCove Nerd Font"
+                "face": "CaskaydiaCove Nerd Font",
+                "size": 13
             },
             "opacity": 35,
+            "startingDirectory": "F:",
             "useAcrylic": true
         },
         "list": [
@@ -70,10 +120,26 @@
                 "name": "Command Prompt"
             },
             {
+                "font": {
+                    "size": 13.5
+                },
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
-                "source": "Windows.Terminal.PowershellCore"
+                "source": "Windows.Terminal.PowershellCore",
+                "startingDirectory": "F:"
+            },
+            {
+                "guid": "{bebddb16-d183-5d37-836d-9a599f362dd1}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2022 (2)",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{2cb638fd-61bc-5806-b0c7-da3ba4f679c0}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2022 (2)",
+                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },
@@ -102,6 +168,7 @@
             "yellow": "#E5C07B"
         }
     ],
+    "tabWidthMode": "equal",
     "themes": [],
     "useAcrylicInTabRow": true
 }
