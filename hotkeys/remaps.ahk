@@ -13,21 +13,16 @@ VKBA::Send, {^}{Space}
     return
 #If
 
+; Show terminal with win + Space
+#Space::showTerminal()
+
 ; Send shift+u with altgr + space (used to open claude)
 <^>!Space::send, +u
 
-; Search by (r)epo (f)ile (d)irectory (t)ext
-; Open in directory 
-~f & ~r::fd("r")
-~f & ~f::fd("f")
-~f & ~d::fd("d")
-~f & ~t::fd("t")
-
-; Open in editor (fscode)
-~e & ~r::vsc("r")
-~e & ~f::vsc("f")
-~e & ~d::vsc("d")
-~e & ~t::vsc("t")
+; Find in terminal with altgr + (r)epo (f)ile (d)irectory 
+<^>!r::fd("r")
+<^>!f::fd("f")
+<^>!d::fd("d")
 
 ; Bind Caps + h/j/k/l to ←/↓/↑/→ 
 Esc & h::send, {Blind}{Left}

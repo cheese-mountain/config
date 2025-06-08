@@ -19,10 +19,8 @@ hideTerminal() {
 }
 
 fd(char) {
-    if (GetKeyState("Alt")) {
-        showTerminal()
-        SendInput, fd %char%{Enter}
-    }
+    showTerminal()
+    SendInput, fd %char%{Enter}
 }
 
 vsc(char) {
