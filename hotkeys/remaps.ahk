@@ -4,25 +4,39 @@ SetCapsLockState, AlwaysOff
 VKBA::Send, {^}{Space}
 
 ; Bind Caps + w to close current window
-#If, WinActive("ahk_exe WindowsTerminal.exe")
-!w::hideTerminal()
-#If, !WinActive("ahk_exe WindowsTerminal.exe")
+; #If, WinActive("ahk_exe WindowsTerminal.exe")
+; !w::hideTerminal()
+; #If, !WinActive("ahk_exe WindowsTerminal.exe")
+; !w::
+;     WinClose, A
+;     WinActivate
+;     return
+; #If
 !w::
     WinClose, A
     WinActivate
     return
-#If
 
-; Show terminal with win + Space
-#Space::showTerminal()
+; Maximize with alt + l on laptop & maxmimi to left on win 10
+; if (A_OSVersion = "10.0.22000") {
+;     !l::send, 
+; }
+
+; Toggle terminal with win + Space
+#Space::toggleTerminal()
+
+; Show termin with altgr + t (used in vscode command)
+~<^>!t::showTerminal()
 
 ; Send shift+u with altgr + space (used to open claude)
-<^>!Space::send, +u
+<^>!Space::send, ^+u
 
-; Find in terminal with altgr + (r)epo (f)ile (d)irectory 
+; Find in terminal with altgr + (r)epo 
 <^>!r::fd("r")
-<^>!f::fd("f")
-<^>!d::fd("d")
+
+; Scroll up/down with alt j/k
+*!j::Send {Down 3}
+*!k::Send {Up 3}
 
 ; Bind Caps + h/j/k/l to ←/↓/↑/→ 
 Esc & h::send, {Blind}{Left}

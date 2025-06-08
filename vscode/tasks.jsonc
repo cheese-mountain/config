@@ -4,14 +4,25 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Toggle Windows Terminal",
+            "label": "Open WezTerm Tab Here",
             "type": "shell",
-            "command": "powershell.exe",
+            "command": "powershell",
+            // "args": [
+            //     "-Command",
+            //     "'${fileDirname}' | Set-Clipboard; Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait('{F12}')"
+            // ],
+            // "args": [
+            //     "-NoProfile",
+            //     "-ExecutionPolicy",
+            //     "Bypass",
+            //     "-File",
+            //     "${env:USERPROFILE}\\scripts\\open-in-wezterm.ps1",
+            //     "${fileDirname}"
+            // ],
             "args": [
-                "-ExecutionPolicy",
-                "Bypass",
-                "-File",
-                "F:/personal/config/vscode/show-terminal.ps1 ${workspaceFolder}"
+                "-NoProfile",
+                "-Command",
+                "wezterm cli spawn --cwd '${fileDirname}'; wezterm cli activate-tab --tab-relative 1;"
             ],
             "group": "build",
             "presentation": {

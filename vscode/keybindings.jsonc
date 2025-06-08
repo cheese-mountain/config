@@ -2,10 +2,11 @@
 [
     // Show WT
     {
-        "key": "ctrl+shift+b",
+        "key": "alt+ctrl+t",
         "command": "workbench.action.tasks.runTask",
-        "args": "Toggle Windows Terminal"
+        "args": "Open WezTerm Tab Here"
     },
+
     // Open projects with ctrl+shift+o
     {
         "key": "shift+ctrl+o",
@@ -134,9 +135,8 @@
 
     // Focus terminal/editor/file explorer
     {
-        "key": "alt+1",
-        "command": "workbench.action.terminal.toggleTerminal",
-        "when": "terminal.active"
+        "command": "workbench.action.focusActiveEditorGroup",
+        "key": "alt+1"
     },
     {
         "command": "workbench.files.action.focusFilesExplorer",
@@ -148,8 +148,9 @@
         "when": "sideBarFocus && filesExplorerFocus"
     },
     {
-        "command": "workbench.action.focusActiveEditorGroup",
-        "key": "alt+3"
+        "key": "alt+3",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
     },
 
     // Focus different editors with ctrl 1-5

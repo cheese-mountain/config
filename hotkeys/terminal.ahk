@@ -1,21 +1,44 @@
-Run, wt.exe
-WinWait, ahk_exe WindowsTerminal.exe
-WinHide, ahk_exe WindowsTerminal.exe
+toggleTerminal() {
+    Process, Exist, wezterm-gui.exe
+    if (ErrorLevel = 0) {
+        Run, wezterm.exe
+    } else {
+        IfWinActive, ahk_exe wezterm-gui.exe 
+        {
+            WinHide, ahk_exe wezterm-gui.exe
+        } else {
+            WinShow, ahk_exe wezterm-gui.exe
+            WinActivate, ahk_exe wezterm-gui.exe
+        }
+    }
+}
+
+openWezTermFromClipboard() {
+    ; Get path from clipboard (set by VS Code task)
+    path := Clipboard
+    
+    ; Create new tab
+    RunWait, wezterm cli spawn --cwd "%path%", , Hide
+    
+    ; Activate the new tab
+    RunWait, wezterm cli activate-tab --tab-relative 1, , Hide
+    
+    ; Show and focus WezTerm
+    showTerminal()
+}
 
 showTerminal() {
-    DetectHiddenWindows, On
-    WinWait, ahk_exe WindowsTerminal.exe
-    WinShow, ahk_exe WindowsTerminal.exe
-    WinActivate, ahk_exe WindowsTerminal.exe
-    DetectHiddenWindows, Off
+    Process, Exist, wezterm-gui.exe
+    if (ErrorLevel = 0) {
+        Run, wezterm.exe
+    } else {
+        WinShow, ahk_exe wezterm-gui.exe
+        WinActivate, ahk_exe wezterm-gui.exe
+    }
 }
 
 hideTerminal() {
-    DetectHiddenWindows, On
-    WinWait, ahk_exe WindowsTerminal.exe
-    WinMinimize, ahk_exe WindowsTerminal.exe
-    DetectHiddenWindows, Off
-    WinActivate
+    WinHide, ahk_exe wezterm-gui.exe
 }
 
 fd(char) {

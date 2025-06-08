@@ -15,7 +15,9 @@ oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
 Import-Module -Name Terminal-Icons
 
 # PSReadLine
-Set-PSReadLineOption -PredictionViewStyle ListView
+# Set-PSReadLineOption -PredictionViewStyle ListView
+
+# Use window style commands (ctrl + c/v/a/x)
 Set-PSReadLineOption -EditMode Windows
 
 # Search r (repo), d (directory), f (file) or t (text)
