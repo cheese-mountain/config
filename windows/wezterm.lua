@@ -13,14 +13,15 @@ config.allow_win32_input_mode = true
 config.term = "xterm-256color"
 config.colors = {
 	copy_mode_active_highlight_bg = { Color = "#000000" },
+    background = "#181825"
 }
 
 -- Theming
 config.font = wezterm.font("CaskaydiaCove Nerd Font")
 config.font_size = 14.0
 config.color_scheme = "rose-pine"
-config.window_background_opacity = 0.5
-config.win32_system_backdrop = "Acrylic"
+-- config.window_background_opacity = 0.5
+-- config.win32_system_backdrop = "Acrylic"
 config.window_padding = {
 	left = 20,
 	right = 20,
@@ -76,24 +77,28 @@ config.unix_domains = {
 }
 config.default_gui_startup_args = { "connect", "unix" }
 
+-- Shared function to set window size with max width limit
+local function set_window_size(gui_window)
+    if not gui_window then return end
+
+    wezterm.time.call_after(0.1, function()
+        local screens = wezterm.gui.screens()
+        if screens and screens.active then
+            local screen = screens.active
+            local width = math.min(screen.width, 2000) -- Max width of 2000 pixels
+            local height = screen.height
+            gui_window:set_position(0, 0)
+            gui_window:set_inner_size(width, height)
+        end
+    end)
+end
+
 -- Auto maximize
 wezterm.on("gui-startup", function(cmd)
     local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
     if window then
         local gui_window = window:gui_window()
-        if gui_window then
-            -- Use a small delay to ensure GUI is ready
-            wezterm.time.call_after(0.1, function()
-                local screens = wezterm.gui.screens()
-                if screens and screens.active then
-                    local screen = screens.active
-                    local width = screen.width 
-                    local height = screen.height
-                    gui_window:set_position(0, 0)
-                    gui_window:set_inner_size(width, height)
-                end
-            end)
-        end
+        set_window_size(gui_window)
     end
 end)
 
@@ -105,16 +110,7 @@ wezterm.on("gui-attached", function(domain)
         for _, window in ipairs(wezterm.mux.all_windows()) do
             local gui_window = window:gui_window()
             if gui_window then
-                wezterm.time.call_after(0.1, function()
-                    local screens = wezterm.gui.screens()
-                    if screens and screens.active then
-                        local screen = screens.active
-                        local width = screen.width 
-                        local height = screen.height
-                        gui_window:set_position(0, 0)
-                        gui_window:set_inner_size(width, height)
-                    end
-                end)
+                set_window_size(gui_window)
                 break -- Only resize the first window
             end
         end
