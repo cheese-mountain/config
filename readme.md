@@ -14,7 +14,7 @@
 3. Install all fonts under ./fonts
 
 ## General customization
-1. Set background.png as desktop background
+1. Set #11111B as background
 2. Hide trashbin under Settings > Personalization > Themes > Desktop icon settings 
 3. Uncheck animate minimize closing of windows & shadow under Advanced System settings > Performance settings
 4. Install windows powertoys
