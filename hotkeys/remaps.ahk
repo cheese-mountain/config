@@ -3,15 +3,6 @@ SetCapsLockState, AlwaysOff
 ; Send caret with one press
 VKBA::Send, {^}{Space}
 
-; Bind Caps + w to close current window
-; #If, WinActive("ahk_exe WindowsTerminal.exe")
-; !w::hideTerminal()
-; #If, !WinActive("ahk_exe WindowsTerminal.exe")
-; !w::
-;     WinClose, A
-;     WinActivate
-;     return
-; #If
 !w::
     WinClose, A
     WinActivate

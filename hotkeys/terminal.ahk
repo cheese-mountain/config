@@ -1,7 +1,7 @@
 toggleTerminal() {
     Process, Exist, wezterm-gui.exe
     if (ErrorLevel = 0) {
-        Run, wezterm.exe
+        Run, wezterm.exe, , Hide
     } else {
         IfWinActive, ahk_exe wezterm-gui.exe 
         {
