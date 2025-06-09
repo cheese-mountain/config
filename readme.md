@@ -19,14 +19,16 @@
 3. Uncheck animate minimize closing of windows & shadow under Advanced System settings > Performance settings
 4. Install windows powertoys
 5. Add auto start apps to folder inside ```win + r shell:startup```
+6. Configure mydockfinder
 
 ### Terminal Setup
 
-1. Install neovim, fzf, latest powershell, windows terminal, Search Everything & oh my posh
+1. Install neovim, wezterm, fzf, latest powershell, windows terminal, Search Everything & oh my posh
 2. Copy paste windows terminal settings from windows/terminal.json
 3. Run ```Set-ExecutionPolicy RemoteSigned -Scope CurrentUser```
 4. Run nvim $profile & insert ```. T:\path\to\this\repo\profile.ps1```
 5. Run ```Install-Module PSEverything, "Terminal-Icons"```
+6. Create wezterm config, ```ni -ItemType SymbolicLink -Path "$home\.wezterm.lua" -Target "T:\path\to\this\repo\windows\wezterm.lua”```
 
 ### Keybindings
 
