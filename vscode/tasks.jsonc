@@ -7,18 +7,6 @@
             "label": "Open WezTerm Tab Here",
             "type": "shell",
             "command": "powershell",
-            // "args": [
-            //     "-Command",
-            //     "'${fileDirname}' | Set-Clipboard; Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait('{F12}')"
-            // ],
-            // "args": [
-            //     "-NoProfile",
-            //     "-ExecutionPolicy",
-            //     "Bypass",
-            //     "-File",
-            //     "${env:USERPROFILE}\\scripts\\open-in-wezterm.ps1",
-            //     "${fileDirname}"
-            // ],
             "args": [
                 "-NoProfile",
                 "-Command",

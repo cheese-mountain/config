@@ -13,14 +13,12 @@ VKBA::Send, {^}{Space}
 ;     !l::send, 
 ; }
 
-; Toggle terminal with win + Space
-#Space::toggleTerminal()
+; Send custom f keys for space + win|altgr
+#Space::send, {F13}
+<^>!Space::send, {F15}
 
-; Show termin with altgr + t (used in vscode command)
-~<^>!t::showTerminal()
-
-; Send shift+u with altgr + space (used to open claude)
-<^>!Space::send, ^+u
+; Show terminal with altgr + t (used in vscode command)
+~<^>!t::send, {F13}
 
 ; Find in terminal with altgr + (r)epo 
 <^>!r::fd("r")

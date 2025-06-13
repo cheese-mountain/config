@@ -1,0 +1,39 @@
+{
+    "Apps": [
+        {
+            "Name": "Terminal",
+            "Hotkeys": [
+                {
+                    "Key": "F13"
+                }
+            ],
+            "FileName": "wezterm-gui",
+            "ProcessName": "wezterm-gui"
+        },
+        // {
+        // 	"Name": "Browser",
+        // 	"Hotkeys": [
+        // 		{
+        // 			"Key": "F14"
+        // 		}
+        // 	],
+        // 	"FileName": "zen",
+        // 	"ProcessName": "zen",
+        // 	"HideOnFocusLost": "Never"
+        // },
+        {
+            "Name": "Claude",
+            "Hotkeys": [
+                {
+                    "Key": "F15"
+                }
+            ],
+            "FileName": "claude",
+            "ProcessName": "claude"
+        }
+    ],
+    "HorizontalScreenCoverage": 99.9999,
+    "HorizontalAlign": "Left",
+    "VerticalScreenCoverage": 100,
+    "AnimationDurationMs": 0
+}

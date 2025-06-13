@@ -20,8 +20,8 @@ config.colors = {
 config.font = wezterm.font("CaskaydiaCove Nerd Font")
 config.font_size = 14.0
 config.color_scheme = "rose-pine"
--- config.window_background_opacity = 0.5
--- config.win32_system_backdrop = "Acrylic"
+config.window_background_opacity = 0.4
+config.win32_system_backdrop = "Acrylic"
 config.window_padding = {
 	left = 20,
 	right = 20,
@@ -85,7 +85,7 @@ local function set_window_size(gui_window)
         local screens = wezterm.gui.screens()
         if screens and screens.active then
             local screen = screens.active
-            local width = math.min(screen.width, 2000) -- Max width of 2000 pixels
+            local width = screen.width - 1 -- math.min(screen.width, 2000) -- Max width of 2000 pixels
             local height = screen.height
             gui_window:set_position(0, 0)
             gui_window:set_inner_size(width, height)
