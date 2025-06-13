@@ -1,6 +1,25 @@
 // Place your key bindings in this file to override the defaults
 [
-    // Show WT
+    // Toggle copilot on/off
+    {
+        "key": "ctrl+k",
+        "command": "toggle",
+        "when": "editorTextFocus && !editorReadonly && !inSnippetMode && !hasOtherSuggestions && !suggestWidgetVisible",
+        "args": {
+            "id": "copilot-enabled",
+            "overrideWorkspaceSettings": true,
+            "value": [
+                {
+                    "github.copilot.enable": { "*": true }
+                },
+                {
+                    "github.copilot.enable": { "*": false }
+                }
+            ]
+        }
+    },
+
+    // Show terminal
     {
         "key": "alt+ctrl+t",
         "command": "workbench.action.tasks.runTask",

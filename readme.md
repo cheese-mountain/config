@@ -32,7 +32,7 @@
 
 1. Install sharpkeys & autohotkey (version 1.1)
 2. Run sharpkeys & remap caps to esc
-2. Open Startup Folder with Win + R, 'shell:startup' & add a shortcut to main.ahk
+2. Open task scheduler with Win + R, 'taskschd.msc' > Create Task. Trigger should be when logged in & action is to execute ./hotkeys/build.exe
 
 ### VSCode
 

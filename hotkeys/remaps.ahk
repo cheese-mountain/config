@@ -8,10 +8,19 @@ VKBA::Send, {^}{Space}
     WinActivate
     return
 
-; Maximize with alt + l on laptop & maxmimi to left on win 10
-; if (A_OSVersion = "10.0.22000") {
-;     !l::send, 
-; }
+#If, WinActive("ahk_exe claude.exe")
+^t::Send, ^k
+#If
+
+; Maximize current window to left with if width bigger than 2000 px else maximize to full screen
+^!h::
+    WinGetPos, x, y, w, h, A
+    if (w > 2000) {
+       Send, #{Left} 
+    } else {
+         Send, #{Up} 
+    }
+    return
 
 ; Send custom f keys for space + win|altgr
 #Space::send, {F13}
