@@ -18,10 +18,11 @@
                 }
             ],
             "FileName": "claude",
-            "ProcessName": "claude"
+            "ProcessName": "Claude"
         }
     ],
-    "HorizontalScreenCoverage": 99.9999,
+    // "HorizontalScreenCoverage": 99.9999,
+    "HorizontalScreenCoverage": "50",
     "HorizontalAlign": "Left",
     "VerticalScreenCoverage": 100,
     "AnimationDurationMs": 0

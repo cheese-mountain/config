@@ -17,7 +17,7 @@ SetBatchLines -1
 mapDesktopsFromRegistry()
 OutputDebug, [loading] desktops: %DesktopCount% current: %CurrentDesktop%
 
-#Include %A_ScriptDir%\terminal.ahk
+; #Include %A_ScriptDir%\dock.ahk
 #Include %A_ScriptDir%\remaps.ahk
 return
 

@@ -13,6 +13,7 @@ $omp_config = Join-Path $PSScriptRoot ".\oh-my-posh.json"
 oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
 
 Import-Module -Name Terminal-Icons
+Import-Module -Name PSEverything
 
 # PSReadLine
 # Set-PSReadLineOption -PredictionViewStyle ListView

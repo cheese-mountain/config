@@ -22,15 +22,17 @@ VKBA::Send, {^}{Space}
     }
     return
 
-; Send custom f keys for space + win|altgr
+; Send custom f keys for space + win|ctrl
 #Space::send, {F13}
-<^>!Space::send, {F15}
+^Space::send, {F15}
 
 ; Show terminal with altgr + t (used in vscode command)
 ~<^>!t::send, {F13}
 
 ; Find in terminal with altgr + (r)epo 
-<^>!r::fd("r")
+<^>!r::
+    Send, {F13}
+    SendInput, fd r{Enter}
 
 ; Scroll up/down with alt j/k
 *!j::Send {Down 3}
@@ -43,7 +45,7 @@ Esc & k::send, {Blind}{Up}
 Esc & l::send, {Blind}{Right}
 
 ; Navigate virtual windows with caps 
-^Space::switchDesktopToLastOpened()
+; ^Space::switchDesktopToLastOpened()
 
 ; move window to target desktop number if alt is pressed, else switch view to it
 switchOrMoveTo(i) {
