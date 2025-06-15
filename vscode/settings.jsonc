@@ -8,7 +8,7 @@
     "security.workspace.trust.untrustedFiles": "open",
     "update.showReleaseNotes": false,
     "github.copilot.enable": {
-        "*": true
+        "*": false
     },
     "[cpp]": {
         "editor.wordBasedSuggestions": "off",

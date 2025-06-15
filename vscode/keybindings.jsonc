@@ -154,11 +154,11 @@
 
     // Focus terminal/editor/file explorer
     {
-        "command": "workbench.action.focusActiveEditorGroup",
+        "command": "workbench.files.action.focusFilesExplorer",
         "key": "alt+1"
     },
     {
-        "command": "workbench.files.action.focusFilesExplorer",
+        "command": "workbench.action.focusActiveEditorGroup",
         "key": "alt+2"
     },
     {
