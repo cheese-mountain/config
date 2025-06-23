@@ -7,8 +7,8 @@
                     "Key": "F13"
                 }
             ],
-            "FileName": "wezterm-gui",
-            "ProcessName": "wezterm-gui"
+            "Filename": "wt",
+            "ProcessName": "WindowsTerminal"
         },
         {
             "Name": "Claude",
@@ -22,7 +22,7 @@
         }
     ],
     // "HorizontalScreenCoverage": 99.9999,
-    "HorizontalScreenCoverage": "50",
+    "HorizontalScreenCoverage": "60",
     "HorizontalAlign": "Left",
     "VerticalScreenCoverage": 100,
     "AnimationDurationMs": 0

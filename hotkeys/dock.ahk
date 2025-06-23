@@ -1,8 +1,6 @@
+#Requires AutoHotkey v1.1.33+
 ; AutoHotkey script to toggle suspend/resume for dock processes
 ; Hotkey: Ctrl+B
-
-; List of processes to toggle
-ProcessList := ["Dock_64.exe", "dockmod.exe", "dockmod64.exe"]
 
 ; Track suspension state (0 = running, 1 = suspended)
 SuspensionState := 0
@@ -10,41 +8,33 @@ SuspensionState := 0
 ; Ctrl+B hotkey
 ^b::
     if (SuspensionState = 0) {
-        ; Currently running - suspend all processes
         SuspendProcesses()
         SuspensionState := 1
-        ShowTooltip("Dock processes suspended")
     } else {
-        ; Currently suspended - resume all processes
         ResumeProcesses()
+        TriggerTopHover()
         SuspensionState := 0
-        ShowTooltip("Dock processes resumed")
     }
-return
+    return
 
 SuspendProcesses() {
-    for index, ProcessName in ProcessList {
-        if (ProcessExist(ProcessName)) {
-            RunWait, cmd /c pssuspend.exe %ProcessName%, , Hide
-        }
-    }
+    RunWait, pssuspend.exe Dock_64.exe, , Hide
+    RunWait, pssuspend.exe dockmod.exe, , Hide
+    RunWait, pssuspend.exe dockmod64.exe, , Hide
 }
 
 ResumeProcesses() {
-    for index, ProcessName in ProcessList {
-        if (ProcessExist(ProcessName)) {
-            RunWait, cmd /c pssuspend.exe -r %ProcessName%, , Hide
-        }
-    }
+    RunWait, pssuspend.exe -r Dock_64.exe, , Hide
+    RunWait, pssuspend.exe -r dockmod.exe, , Hide
+    RunWait, pssuspend.exe -r dockmod64.exe, , Hide
 }
 
-; Helper function to check if process exists
-ProcessExist(ProcessName) {
-    Process, Exist, %ProcessName%
-    return ErrorLevel
+TriggerTopHover() {
+    MouseGetPos, CurrentX, CurrentY
+    MouseMove, A_ScreenWidth/2, 0, 0
+    Sleep, 500
 }
 
-; Show tooltip notification
 ShowTooltip(Message) {
     ToolTip, %Message%
     SetTimer, RemoveToolTip, 2000
@@ -53,12 +43,4 @@ ShowTooltip(Message) {
 RemoveToolTip:
     ToolTip
     SetTimer, RemoveToolTip, Off
-return
-
-; Optional: Show script status on startup
-^!i::
-    if (SuspensionState = 0) {
-        ShowTooltip("Dock processes are currently RUNNING")
-    } else {
-        ShowTooltip("Dock processes are currently SUSPENDED")
-    }
+    return
