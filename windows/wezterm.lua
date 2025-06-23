@@ -12,16 +12,17 @@ config.disable_default_mouse_bindings = false
 config.allow_win32_input_mode = true
 config.term = "xterm-256color"
 config.colors = {
-	copy_mode_active_highlight_bg = { Color = "#000000" },
-    -- background = "#181825"
+	selection_bg = "#000000",
+	-- selection_bg = "#11111b",
+    	background = "#181825"
 }
 
 -- Theming
 config.font = wezterm.font("CaskaydiaCove Nerd Font")
 config.font_size = 14.0
 config.color_scheme = "rose-pine"
-config.window_background_opacity = 0.9
--- config.win32_system_backdrop = "Acrylic"
+config.window_background_opacity = 1
+-- config.win32_system_backdrop = "Mica"
 config.window_padding = {
 	left = 20,
 	right = 20,

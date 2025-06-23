@@ -1,14 +1,12 @@
 {
     "intelephense.environment.includePaths": [
-        "G:/wordpress/plugins",
-        "F:/spektra/wp-sites/intellisense/app/public",
-        "F:/spektra/repos/spektra-form-plugin/plugin"
+        "B:/data/wp-sites/blueprint/app/public"
     ],
     "security.promptForLocalFileProtocolHandling": false,
     "security.workspace.trust.untrustedFiles": "open",
     "update.showReleaseNotes": false,
     "github.copilot.enable": {
-        "*": false
+        "*": true
     },
     "[cpp]": {
         "editor.wordBasedSuggestions": "off",

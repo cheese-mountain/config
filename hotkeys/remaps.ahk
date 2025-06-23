@@ -25,45 +25,39 @@ VKBA::Send, {^}{Space}
 ; Send custom f keys for space + win|ctrl
 #Space::send, {F13}
 ^Space::send, {F15}
-
 ; Show terminal with altgr + t (used in vscode command)
 ~<^>!t::send, {F13}
-
 ; Find in terminal with altgr + (r)epo 
 <^>!r::
     Send, {F13}
     SendInput, fd r{Enter}
 
-; Scroll up/down with alt j/k
-*!j::Send {Down 3}
-*!k::Send {Up 3}
+; Scroll up/down with win + u/d
+#u::Send {WheelUp 5}
+#d::Send {WheelDown 5}
 
-; Bind Caps + h/j/k/l to ←/↓/↑/→ 
-Esc & h::send, {Blind}{Left}
-Esc & j::send, {Blind}{Down}
-Esc & k::send, {Blind}{Up}
-Esc & l::send, {Blind}{Right}
-
-; Navigate virtual windows with caps 
-; ^Space::switchDesktopToLastOpened()
+; Bind win + h/j/k/l to ←/↓/↑/→ 
+#h::send, {Left}
+#j::send, {Down}
+#k::send, {Up}
+#l::send, {Right}
 
 ; move window to target desktop number if alt is pressed, else switch view to it
 switchOrMoveTo(i) {
-    if (GetKeyState("Alt")) {
-        MoveCurrentWindowToDesktop(i)
-    } else {
-        switchDesktopByNumber(i)
-    }
+    switchDesktopByNumber(i)
+    ; if (GetKeyState("Alt")) {
+    ;     MoveCurrentWindowToDesktop(i)
+    ; } else {
+    ;     switchDesktopByNumber(i)
+    ; }
 }
    
-Esc & 1::switchOrMoveTo(1)
-Esc & 2::switchOrMoveTo(2)
-Esc & 3::switchOrMoveTo(3)
-Esc & 4::switchOrMoveTo(4)
-Esc & 5::switchOrMoveTo(5)
-Esc & 6::switchOrMoveTo(6)
-Esc & 7::switchOrMoveTo(7)
-Esc & 8::switchOrMoveTo(8)
-Esc & 9::switchOrMoveTo(9)
-
-Esc::Send, {Blind}{Esc}  ; restore Escape key when pressed alone
+#1::switchOrMoveTo(1)
+#2::switchOrMoveTo(2)
+#3::switchOrMoveTo(3)
+#4::switchOrMoveTo(4)
+#5::switchOrMoveTo(5)
+#6::switchOrMoveTo(6)
+#7::switchOrMoveTo(7)
+#8::switchOrMoveTo(8)
+#9::switchOrMoveTo(9)
