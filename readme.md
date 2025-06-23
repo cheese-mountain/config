@@ -1,4 +1,5 @@
-# Configuration
+# Guide
+Make sure all applications run as admin to not run into any issues
 
 ## Table of Contents
 
@@ -21,18 +22,19 @@
 
 ### Terminal Setup
 
-1. Install neovim, wezterm, fzf, latest powershell, windows terminal, Search Everything & oh my posh
+1. Install neovim, wezterm, wtq, fzf, latest powershell, windows terminal, Search Everything & oh my posh
 2. Copy paste windows terminal settings from windows/terminal.json
 3. Run ```Set-ExecutionPolicy RemoteSigned -Scope CurrentUser```
 4. Run nvim $profile & insert ```. T:\path\to\this\repo\profile.ps1```
 5. Run ```Install-Module PSEverything, "Terminal-Icons"```
-6. Create wezterm config, ```ni -ItemType SymbolicLink -Path "$home\.wezterm.lua" -Target "T:\path\to\this\repo\windows\wezterm.lua”```
+6. Create wezterm config, ```ni -ItemType SymbolicLink -Path "$home\.config\.wezterm.lua" -Target "T:\path\to\this\repo\windows\wezterm.lua”```
+7. Create wtq config, ```ni -ItemType SymbolicLink -Path "$home\.config\wtq.json" -Target "T:\path\to\this\repo\windows\wtq.json”```
 
 ### Keybindings
 
 1. Install sharpkeys & autohotkey (version 1.1)
 2. Run sharpkeys & remap caps to esc
-2. Open task scheduler with Win + R, 'taskschd.msc' > Create Task. Trigger should be when logged in & action is to execute ./hotkeys/build.exe
+3. Open task scheduler with Win + R, 'taskschd.msc' > Create Task. Trigger should be when logged in & action is to execute ./hotkeys/build.exe
 
 ### VSCode
 
